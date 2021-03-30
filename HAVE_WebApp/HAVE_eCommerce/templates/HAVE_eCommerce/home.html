@@ -1,0 +1,223 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Home {% endblock %}
+
+{% block content %}
+
+{% load static %}
+<!------------------------------------------------------------- Page Content------------------------------------------------------------->
+<!-- Main Advertisement Section -->
+<section>
+	<div class="px-lg-5" style="background-color: #f5b1b0;">
+		<div class="d-lg-flex justify-content-between align-items-center pl-lg-4" >
+			<img class="d-block order-lg-2 mr-lg-n5 flex-shrink-0" src="{% static 'HAVE_eCommerce/img/home/01.jpg' %}" style="height: 700px;">
+			<div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1" style="max-width: 42rem; z-index: 10;">
+				<div class="pb-lg-5 mb-lg-5 text-center text-lg-left text-lg-nowrap" style="margin-left: -200px;">
+					<h2 class="text-light font-weight-light pb-1 from-bottom">Hurry up! Limited time offer.</h2>
+					<h1 class="text-light display-4 from-bottom delay-1">Like Something? HAVE it!</h1>
+					<p class="font-size-lg text-light pb-3 from-bottom delay-2">Teams are filling up fast...Hurry!</p>
+					<a class="btn btn-primary scale-up delay-4" href="/shop">Shop Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Main Advirtisement Section End -->
+
+
+
+<!-- Shop By Category-->
+<section class="container py-lg-4" id="shopbycat">
+	<div><br><br></div>
+	<h2 class="h3 text-center pb-4" >Shop By Category</h2>
+	<div class="row">
+		<div class="col-md-3 col-sm-4 col-6"><a class="d-block bg-white box-shadow-sm rounded-lg py-3 py-sm-4 mb-grid-gutter" href="#cat1"><img class="d-block mx-auto" src="{% static 'HAVE_eCommerce/img/home/cat01.jpg' %}" style="width: 150px;" alt="Brand"></a></div>
+		<div class="col-md-3 col-sm-4 col-6"><a class="d-block bg-white box-shadow-sm rounded-lg py-3 py-sm-4 mb-grid-gutter" href="#cat2"><img class="d-block mx-auto" src="{% static 'HAVE_eCommerce/img/home/cat02.jpg' %}" style="width: 150px;" alt="Brand"></a></div>
+		<div class="col-md-3 col-sm-4 col-6"><a class="d-block bg-white box-shadow-sm rounded-lg py-3 py-sm-4 mb-grid-gutter" href="#cat3"><img class="d-block mx-auto" src="{% static 'HAVE_eCommerce/img/home/cat03.jpg' %}" style="width: 150px;" alt="Brand"></a></div>
+		<div class="col-md-3 col-sm-4 col-6"><a class="d-block bg-white box-shadow-sm rounded-lg py-3 py-sm-4 mb-grid-gutter" href="#cat4"><img class="d-block mx-auto" src="{% static 'HAVE_eCommerce/img/home/cat04.png' %}" style="width: 150px; height: 65px;" alt="Brand"></a></div>
+	</div>
+	<div><br><br></div>
+</section>
+	<!-- Shop By Category End-->
+
+
+	<!-- Category 1-->
+	<section class="container pt-lg-3 mb-4 mb-sm-5">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="d-flex flex-column h-100 overflow-hidden rounded-lg" style="background-color: #f6f8fb;">
+					<div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
+						<div id="cat1">
+							<h3 class="mb-1">Fashion</h3><a class="font-size-md" href="#">Shop for clothes<i class="czi-arrow-right font-size-xs align-middle ml-1"></i></a>
+						</div>
+					</div><a href="#"><img class="d-block w-100" src="https://source.unsplash.com/2400x1600/?fashion,women" alt="For Women"></a>
+				</div>
+			</div>
+			<!-- Product Grid -->
+			<div class="col-md-7 pt-4 pt-md-0">
+				<!-- Product Begin -->
+        		<div class="row mx-n2">
+					{% for product in fashion %}						
+					<div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
+						<div class="card product-card card-static" style="width: 250px; height: 490px; padding: 7px;">							  
+							<a class="card-img-top d-block overflow-hidden" href="#"><img src="{{product.image.url}}"  style="height: 240px;" alt="Product"></a>
+							<div class="card-body py-2"><a class="product-meta d-block font-size-xs pb-1" href="#">{{product.category}} | {{product.subcategory}}</a>
+								<h3 class="product-title font-size-sm"><a href="#">{{product.name}}</a></h3>
+								<div class="d-flex justify-content-between">
+									<div class="product-price"><span class="text-left"><strike>Rs. {{product.individual_price|floatformat:2}}</strike></span></div>
+									<div class="product-price"><span class="text-accent">Rs. {{product.bulk_price|floatformat:2}}</span></div>                      
+								</div>
+							</div>
+							{% if product.stock == 0 %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color: tomato;">Out of Stock!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" disabled><a style="color:white">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="#"></i>Individual Purchase</a></div>
+							{% else %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color:rgb(99, 205, 50);"> {{product.stock}} items Available!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" ><a style="color:white" href ="{% url 'team_purchase' product.productID  %}">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="{% url 'individual_purchase' product.productID  %}"></i>Individual Purchase</a></div>
+							{% endif %}
+						</div>
+					</div>
+				<!-- Product End-->
+				{% endfor %}
+				</div>			
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Category 2-->
+	<section class="container pt-lg-34 mb-4 mb-sm-5">
+		<div class="row">
+			<div class="col-md-5 order-md-2">
+				<div class="d-flex flex-column h-100 overflow-hidden rounded-lg" style="background-color: #f6f8fb;">
+					<div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
+						<div id="cat2">
+							<h3 class="mb-1">Electronics</h3><a class="font-size-md" href="#">Shop latest gadgets<i class="czi-arrow-right font-size-xs align-middle ml-1"></i></a>
+						</div>
+					</div><a href="#"><img class="d-block w-100" src="https://source.unsplash.com/2400x1600/?electronics" alt="For Men"></a>
+				</div>
+			</div>
+			<!-- Product Grid -->
+			<div class="col-md-7 pt-4 pt-md-0">
+				<!-- Product Begin -->
+				<div class="row mx-n2">
+					{% for product in electronics %}						
+					<div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
+						<div class="card product-card card-static" style="width: 250px; height: 490px; padding: 7px;">							  
+							<a class="card-img-top d-block overflow-hidden" href="#"><img src="{{product.image.url}}"  style="height: 240px;" alt="Product"></a>
+							<div class="card-body py-2"><a class="product-meta d-block font-size-xs pb-1" href="#">{{product.category}} | {{product.subcategory}}</a>
+								<h3 class="product-title font-size-sm"><a href="#">{{product.name}}</a></h3>
+								<div class="d-flex justify-content-between">
+									<div class="product-price"><span class="text-left"><strike>Rs. {{product.individual_price|floatformat:2}}</strike></span></div>
+									<div class="product-price"><span class="text-accent">Rs. {{product.bulk_price|floatformat:2}}</span></div>                      
+								</div>
+							</div>
+							{% if product.stock == 0 %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color: tomato;">Out of Stock!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" disabled><a style="color:white">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="#"></i>Individual Purchase</a></div>
+							{% else %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color:rgb(99, 205, 50);"> {{product.stock}} items Available!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" ><a style="color:white" href ="{% url 'team_purchase' product.productID  %}">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="{% url 'individual_purchase' product.productID  %}"></i>Individual Purchase</a></div>
+							{% endif %}
+						</div>
+					</div>
+				<!-- Product End-->
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+		
+	<!-- Category 3-->
+	<section class="container pt-lg-3 mb-4 mb-sm-5">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="d-flex flex-column h-100 overflow-hidden rounded-lg" style="background-color: #f6f8fb;">
+					<div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
+						<div id="cat3">
+							<h3 class="mb-1">Grocery</h3><a class="font-size-md" href="#">Shop fresh vegetables<i class="czi-arrow-right font-size-xs align-middle ml-1"></i></a>
+						</div>
+					</div><a href="#"><img class="d-block w-100" src="https://source.unsplash.com/2400x1600/?grocery" alt="Grocery"></a>
+				</div>
+			</div>
+			<!-- Product Grid -->
+			<div class="col-md-7 pt-4 pt-md-0">
+				<!-- Product Begin -->
+				<div class="row mx-n2">
+					{% for product in grocery %}						
+					<div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
+						<div class="card product-card card-static" style="width: 250px; height: 490px; padding: 7px;">							  
+							<a class="card-img-top d-block overflow-hidden" href="#"><img src="{{product.image.url}}"  style="height: 240px;" alt="Product"></a>
+							<div class="card-body py-2"><a class="product-meta d-block font-size-xs pb-1" href="#">{{product.category}} | {{product.subcategory}}</a>
+								<h3 class="product-title font-size-sm"><a href="#">{{product.name}}</a></h3>
+								<div class="d-flex justify-content-between">
+									<div class="product-price"><span class="text-left"><strike>Rs. {{product.individual_price|floatformat:2}}</strike></span></div>
+									<div class="product-price"><span class="text-accent">Rs. {{product.bulk_price|floatformat:2}}</span></div>                      
+								</div>
+							</div>
+							{% if product.stock == 0 %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color: tomato;">Out of Stock!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" disabled><a style="color:white">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="#"></i>Individual Purchase</a></div>
+							{% else %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color:rgb(99, 205, 50);"> {{product.stock}} items Available!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" ><a style="color:white" href ="{% url 'team_purchase' product.productID  %}">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="{% url 'individual_purchase' product.productID  %}"></i>Individual Purchase</a></div>
+							{% endif %}
+						</div>
+					</div>
+				<!-- Product End-->
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Category 4-->
+	<section class="container pt-lg-34 mb-4 mb-sm-5"  id="cat4">
+		<div class="row">
+			<div class="col-md-5 order-md-2">
+				<div class="d-flex flex-column h-100 overflow-hidden rounded-lg" style="background-color: #f6f8fb;">
+					<div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
+						<div>
+							<h3 class="mb-1">Home Essentials</h3><a class="font-size-md" href="#">Shop for home<i class="czi-arrow-right font-size-xs align-middle ml-1"></i></a>
+						</div>
+					</div><a href="#"><img class="d-block w-100" src="https://source.unsplash.com/2400x1600/?detergent" alt="Home Essentials"></a>
+				</div>
+			</div>
+			<!-- Product Grid -->
+			<div class="col-md-7 pt-4 pt-md-0">
+				<!-- Product Begin -->
+				<div class="row mx-n2">
+				{% for product in home_essentials %}						
+				<div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
+					<div class="card product-card card-static" style="width: 250px; height: 490px; padding: 7px;">						  
+						<a class="card-img-top d-block overflow-hidden" href="#"><img src="{{product.image.url}}"  style="height: 240px;" alt="Product"></a>
+						<div class="card-body py-2"><a class="product-meta d-block font-size-xs pb-1" href="#">{{product.category}} | {{product.subcategory}}</a>
+							<h3 class="product-title font-size-sm"><a href="#">{{product.name}}</a></h3>
+							<div class="d-flex justify-content-between">
+								<div class="product-price"><span class="text-left"><strike>Rs. {{product.individual_price|floatformat:2}}</strike></span></div>
+								<div class="product-price"><span class="text-accent">Rs. {{product.bulk_price|floatformat:2}}</span></div>                      
+							</div>
+						</div>
+						{% if product.stock == 0 %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color: tomato;">Out of Stock!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" disabled><a style="color:white">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="#"></i>Individual Purchase</a></div>
+							{% else %}
+							<div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color:rgb(99, 205, 50);"> {{product.stock}} items Available!</a></div>
+							<button class="btn btn-primary btn-sm btn-block mb-2" type="button" ><a style="color:white" href ="{% url 'team_purchase' product.productID  %}">Team Purchase</a></button>
+							<div class="text-center"><a class="nav-link-style font-size-ms" href ="{% url 'individual_purchase' product.productID  %}"></i>Individual Purchase</a></div>
+							{% endif %}
+						</div>
+					</div>
+			<!-- Product End-->
+			{% endfor %}
+			</div>
+		</div>
+	</section>
+<!----------------------------------------------------------- Page Content End -------------------------------------------------------------->
+{% endblock %}

@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HAVE | Sign Up</title>
+    <link rel="stylesheet" media="screen" href="{% static 'HAVE_eCommerce/css/bootstrap.min.css' %}">
+    
+</head>
+  <!-- Body-->
+  <body>
+     <div class="container" style="padding-top: 10px">
+      <h5 style="align-content: center;"><img src="{% static 'HAVE_eCommerce/img/logo-dark.png'%} " style="width: 125px; height: 40px" alt="">&nbsp;&nbsp;<strong>Account Setup</strong> | Fill in the details to create an account</h5><hr><br>
+        <form class="needs-validation tab-pane fade show active" method="POST">
+          <div class="row">
+          {% csrf_token %}
+            {{ form.errors }}
+            {{ form.non_field_errors }}
+            <div class="col-lg">
+                <h6><strong>Basic Details</strong></h6><hr><br>
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input class="form-control" type="text" name="{{ profile_form.firstName.name }}" id="{{ profile_form.firstName.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input class="form-control" type="text" name="{{ profile_form.lastName.name }}" id="{{ profile_form.lastName.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="email">User Name</label>
+                  <input class="form-control" type="text" name="{{ user_form.username.name }}" id="{{ user_form.username.name }}" >
+                  {% if user_form.username.errors %}<div class="alert alert-danger"><strong>{{user_form.username.errors}}</strong></div> {% endif %}
+                </div>
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input class="form-control" type="text" name="{{ profile_form.email.name }}" id="{{ profile_form.email.name }}" >
+                  <div class="invalid-feedback">Please provide a valid email address.</div>
+                </div>
+                <div class="form-group">
+                  <label for="phone1">Phone Number </label>
+                  <input class="form-control" type="text" name="{{ profile_form.phone1.name }}" id="{{ profile_form.phone1.name }}" >
+                  <div class="invalid-feedback">Please provide a valid phone number</div>
+                </div>
+                <div class="form-group">
+                  <label for="password1">Password</label>
+                    <input class="form-control" type="password" name="{{ user_form.password1.name }}" id="{{ user_form.password1.name }}" >
+                    {% if user_form.password1.errors %}<div class="alert alert-danger"><strong>{{user_form.password1.errors}}</strong></div> {% endif %}
+                </div>
+                <div class="form-group">
+                  <label for="password2">Confirm Password</label>
+                    <input class="form-control" type="password" name="{{ user_form.password2.name }}" id="{{ user_form.password2.name }}" >
+                    {% if user_form.password2.errors %}<div class="alert alert-danger"><strong>{{user_form.password2.errors}}</strong></div> {% endif %}
+                </div>
+            </div>
+            <div class="col-lg">
+                <h6><strong>Address Details</strong></h6><hr><br>              
+                <div class="form-group">
+                  <label for="addressLine1">Address Line 1</label>
+                  <input class="form-control" type="text" name="{{ profile_form.addressLine1.name }}" id="{{ profile_form.addressLine1.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="addressLine2">Address Line 2</label>
+                  <input class="form-control" type="text" name="{{ profile_form.addressLine2.name }}" id="{{ profile_form.addressLine2.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input class="form-control" type="text" name="{{ profile_form.city.name }}" id="{{ profile_form.city.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input class="form-control" type="text" name="{{ profile_form.state.name }}" id="{{ profile_form.state.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input class="form-control" type="text" name="{{ profile_form.country.name }}" id="{{ profile_form.country.name }}" >
+                </div>
+                <div class="form-group">
+                  <label for="pincode">Pincode</label>
+                  <input class="form-control" type="text" name="{{ profile_form.pincode.name }}" id="{{ profile_form.pincode.name }}" >
+                </div>          
+                <div class="form-group">
+                  <label for="phone2">Additional Contact Number</label>
+                  <input class="form-control" type="text" name="{{ profile_form.phone2.name }}" id="{{ profile_form.phone2.name }}" >
+                  <div class="invalid-feedback">Please provide a valid phone number.</div>
+                </div>              
+                <div class="form-group d-flex flex-wrap justify-content-between">
+                  <button class="btn btn-primary btn-block btn-shadow" type="submit" name="submit">Create Account</button>
+                  <a class="font-size-sm" href="{% url 'signin' %}"><br>Already a member? Sign In to shop!</a><br>
+                </div>
+            </div>
+      </div>      
+    </form> 
+    </div>
+  </body>
+</html>

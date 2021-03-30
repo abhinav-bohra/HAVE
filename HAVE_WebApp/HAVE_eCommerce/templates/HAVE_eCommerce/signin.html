@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HAVE | Sign In</title>
+    <link rel="stylesheet" media="screen" href="{% static 'HAVE_eCommerce/css/bootstrap.min.css' %}">
+</head>
+  <!-- Body-->
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg">
+        <img src="{% static 'HAVE_eCommerce/img/signin.svg' %}" class="image" alt="" style="width: 1250px; height: 700px; margin-bottom: 40px;">
+        </div>
+        <div class="col-sm" style="margin-left: 120px; margin-top: 70px">
+          <img src="{% static 'HAVE_eCommerce/img/logo-dark.png' %}" class="image" alt="" style="width: 250px; height: 100px; margin-bottom: 20px; margin-left: 120px">
+          <h4 style="text-align: center;">A Social e-Commerce Platform</h4>
+          <hr><br>
+          <h6 style="text-align: center;">Like something? Login to HAVE it!</h4><br>
+            <div class="col-lg">
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                  </div>
+                  {{break}}
+                {% endfor %}
+              {% endif %}
+            </div>
+          <form class="needs-validation tab-pane fade show active" method="POST">
+            {% csrf_token %}
+            {{ form.errors }}
+            {{ form.non_field_errors }}              
+            <div class="form-group">
+              <label for="email">Username</label>
+              <input class="form-control" type="text" name="username" id="username" >
+              {% if user_form.username.errors %}<div class="alert alert-danger"><strong>{{user_form.username.errors}}</strong></div> {% endif %}
+              <div class="invalid-feedback">Please provide a valid email address.</div>
+            </div>
+            <div class="form-group">
+              <label for="password1">Password</label>
+                <input class="form-control" type="password" name="password" id="password" >
+                {% if user_form.password1.errors %}<div class="alert alert-danger"><strong>{{user_form.password1.errors}}</strong></div> {% endif %}
+            </div>
+            <div class="form-group d-flex flex-wrap justify-content-between">
+                <div class="custom-control custom-checkbox mb-2">
+                  <input class="custom-control-input" type="checkbox" id="si-remember">
+                  <label class="custom-control-label" for="si-remember">Remember me</label>
+                </div><a class="font-size-sm" href="#">Forgot password?</a>
+              </div>
+              <button class="btn btn-primary btn-block btn-shadow" type="submit" >Sign in</button>
+              <a class="font-size-sm" href="{% url 'signup' %}"><br>Not a member yet? Sign Up for Free!</a><br>
+            </form>
+        </div>
+      </div> 
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Search {% endblock %}
+
+{% block content %}
+<div class="col-md-7 pt-4 pt-md-0">
+  <!-- Product Begin -->
+    <div class="row mx-n2">
+    {% for product in queryset %}						
+    <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
+      <div class="card product-card card-static">							  
+        <a class="card-img-top d-block overflow-hidden" href="#"><img src="{{product.image.url}}"  style="height: 240px;" alt="Product"></a>
+        <div class="card-body py-2"><a class="product-meta d-block font-size-xs pb-1" href="#">{{product.category}} | {{product.subcategory}}</a>
+          <h3 class="product-title font-size-sm"><a href="#">{{product.name}}</a></h3>
+          <div class="d-flex justify-content-between">
+            <div class="product-price"><span class="text-left"><strike>Rs. {{product.individual_price|floatformat:2}}</strike></span></div>
+            <div class="product-price"><span class="text-accent">Rs. {{product.bulk_price|floatformat:2}}</span></div>                      
+          </div>
+        </div>
+        {% if product.stock == 0 %}
+        <div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color: tomato;">Out of Stock!</a></div>
+        <button class="btn btn-primary btn-sm btn-block mb-2" type="button" disabled><a style="color:white">Team Purchase</a></button>
+        <div class="text-center"><a class="nav-link-style font-size-ms" href ="#"></i>Individual Purchase</a></div>
+        {% else %}
+        <div class="card-body py-2"><a class="product-meta d-block font-size-m pb-1 text-center" style="color:rgb(99, 205, 50);">Available!</a></div>
+        <button class="btn btn-primary btn-sm btn-block mb-2" type="button" ><a style="color:white" href ="{% url 'team_purchase' product.productID  %}">Team Purchase</a></button>
+        <div class="text-center"><a class="nav-link-style font-size-ms" href ="{% url 'individual_purchase' product.productID  %}"></i>Individual Purchase</a></div>
+        {% endif %}
+      </div>
+    </div>
+  <!-- Product End-->
+  {% endfor %}
+  </div>			
+</div>
+{% endblock content%}

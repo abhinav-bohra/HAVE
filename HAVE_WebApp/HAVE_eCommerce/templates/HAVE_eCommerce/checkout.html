@@ -1,0 +1,81 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Orders {% endblock %}
+
+{% block content %}
+<!-- Body-->
+<div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+    <h1 style="color: black;">Checkout</h1>
+</div>
+<br><br<br><br<br>
+<div class="container pb-5 mb-2 mb-md-3">
+  <div class="pt-2 px-4 pr-lg-0 pl-xl-5">
+    <h2 class="h6 border-bottom pb-3 mb-3">Product details</h2>
+    <!-- Product detail-->
+    <!-- Product-->
+    {% for prod in product %}
+    <div class="media d-block d-sm-flex align-items-center pt-4 pb-2">
+      <a class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto" style="width: 12.5rem;">
+        <img class="rounded-lg" src="{{prod.image.url}}" alt="Product"></a>
+      <div class="media-body text-center text-sm-left">
+        <h3 class="h6 product-title mb-2">{{prod.name}}</a></h3>
+        {% if teamID %}
+        <div class="product-price">Bill Amount: Rs. {{prod.bulk_price|floatformat:2}}</div>
+				<div class="d-inline-block text-accent">Savings: Rs. {{savings|floatformat:2}}</div> 
+        {% else %}
+        <div class="product-price">Bill Amount: Rs. {{prod.individual_price|floatformat:2}}</div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    <h2 class="h6 border-bottom pb-3 mb-3">
+      <br>Billing details</h2>
+    <!-- Billing detail-->
+    <form class="needs-validation tab-pane fade show active" method="POST">
+      {% csrf_token %}
+      {{ form.errors }}
+      {{ form.non_field_errors }}
+      <div class="row pb-4">
+        {% for cust in customer %}
+        <div class="col-sm-6 form-group">
+          <label for="mc-fn">First name <span class='text-danger'>*</span></label>
+          <input class="form-control" type="text" value="{{cust.firstName}}" name="firstName" id="firstName">
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="mc-ln">Last name <span class='text-danger'>*</span></label>
+          <input class="form-control" type="text" value="{{cust.lastName}}" name="lastName" id="lastName">
+        </div>
+        <div class="col-12 form-group">
+          <label for="mc-email">Delivery Address <span class='text-danger'>*</span></label>
+          <input class="form-control" type="text" value="{{cust.addressLine1}}, {{cust.addressLine2}}, {{cust.city}}, {{cust.state}}, {{cust.country}} - {{cust.pincode}}" name="Address" id="Address">
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Payment methods accordion-->
+      <div class="accordion mb-2" id="payment-method" role="tablist">
+        <div class="card">
+          <div class="card-header" role="tab">
+            <h3 class="accordion-heading"><a class="collapsed" href="#points" data-toggle="collapse"><i class="money-bag mr-2"></i>Pay with my account balance<span class="accordion-indicator"></span></a></h3>
+          </div>
+          <div class="card-body">
+            {% for w in wallet %}
+              <p>You currently have<span class="font-weight-medium">&nbsp;Rs. {{w.balance|floatformat:2}}</span>&nbsp;on your account balance.</p>
+              <button class="btn btn-primary mt-0" type="submit" name="submit" id="submit" >Pay with account balance</button>
+            {% endfor %}
+          </div>
+          <div class="col-md-8">
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </form>          
+    
+  </div>
+</div>  
+{% endblock %}

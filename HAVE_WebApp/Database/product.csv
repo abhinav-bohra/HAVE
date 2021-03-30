@@ -1,0 +1,26 @@
+﻿productID,name,category,description,stock,individual_price,bulk_price,req_team_size,dateCreated,datePublised,webStatus,image,paymentMode,subcategory
+1,Puma X100,Fashion,"shoes, puma, fashion",100,6000,4500,20,27-07-2019,08-03-2021,1,products/1.jpg,Wallet,Shoes
+2,US Polo Shirt,Fashion,"polo shirt, us polo, usp, tshirt",10,1200,1000,5,28-07-2019,09-03-2021,1,products/2.jpg,Wallet,Tshirt
+3,Apple iPhone 12 Pro Max,Electronics,"iphone, apple, smartphone",2,125000,115000,10,29-07-2019,10-03-2021,1,products/3.jpg,Wallet,Smartphone
+4,Levi's Spanger Light Blue Jeans  ,Fashion,"levis,jeans,spanger",4,3900,3500,5,30-07-2019,11-03-2021,1,products/4.jpg,Wallet,Jeans
+5,Titan 745,Fashion,"titan, watch",40,7800,7500,15,31-07-2019,12-03-2021,1,products/5.jpg,Wallet,Watch
+6,Dell XPS,Electronics,"dell,laptop,core i7,12 GB RAM,512 GB SSD Storage",60,110000,104000,10,01-08-2019,13-03-2021,1,products/6.jpg,Wallet,Laptop
+7,Sony Bravia,Electronics,"OLED,TV,Sony,Bravia",30,70000,60000,10,02-08-2019,14-03-2021,1,products/7.jpg,Wallet,TV
+8,Vivo V9,Electronics,"Vivo,V9",150,15000,12000,30,03-08-2019,15-03-2021,1,products/8.jpg,Wallet,Smartphone
+9,JBL JX20 Headphones,Electronics,"Headphones,JBL",60,7000,6500,25,04-08-2019,16-03-2021,1,products/9.jpg,Wallet,Headphones
+10,Amazon Echo,Electronics,"Alexa,echo,amazon",40,8000,7000,10,05-08-2019,17-03-2021,1,products/10.jpg,Wallet,Smart Speakers
+11,Amul Butter,Grocery,"butter,amul",200,100,50,40,06-08-2019,18-03-2021,1,products/11.jpg,Wallet,FMCG
+12,Bread,Grocery,white bread,300,30,10,50,07-08-2019,19-03-2021,1,products/12.jpg,Wallet,Packed
+13,Kissan Mixed Fruit Jam,Grocery,"kissan, jam,mixed fruit",90,120,100,10,08-08-2019,20-03-2021,1,products/13.jpg,Wallet,Packed
+14,Lays,Grocery,"lay's,potato chips",100,20,12,20,09-08-2019,21-03-2021,1,products/14.jpg,Wallet,FMCG
+15,Cookies,Grocery,"bake'n'shake,cookies",91,100,60,30,10-08-2019,22-03-2021,1,products/15.jpg,Wallet,FMCG
+16,Harpic,Home Essentials,"Harpic,toilet cleaner",76,170,150,10,11-08-2019,23-03-2021,1,products/16.jpg,Wallet,Cleaning Essentials
+17,Domex,Home Essentials,"domex,floor cleaner",30,205,195,5,12-08-2019,24-03-2021,1,products/17.jpg,Wallet,Cleaning Essentials
+18,Colgate Max Fresh,Home Essentials,"colgate, toothpaste",5,20,5,40,13-08-2019,25-03-2021,1,products/18.jpg,Wallet,Toothpaste
+19,Adidas Flex,Fashion,"shoes, adidas",70,14000,12000,30,14-08-2019,26-03-2021,1,products/19.jpg,Wallet,Shoes
+20,Manyavar Men's Wedding Kurta,Fashion,"manyavar,kurta,wedding",50,15000,12500,25,15-08-2019,27-03-2021,1,products/20.jpg,Wallet,Traditional
+21,Ethnix Nehru Jacket ,Fashion,"raymonds,ethnix,nehru jacket",40,3500,3000,20,16-08-2019,28-03-2021,1,products/21.jpg,Wallet,Traditional
+22,Lee Denim Jacket,Fashion,"lee,jacket, denim",50,5500,4800,25,17-08-2019,29-03-2021,1,products/22.jpg,Wallet,Jacket
+23,Alphonso Mango 1 KG ,Grocery,"mango,alphonso",100,550,300,50,18-08-2019,30-03-2021,1,products/23.jpg,Wallet,Fruit
+24,Prestige Frying Pan,Home Essentials,"prestige,frying pan",30,6000,5500,30,19-08-2019,31-03-2021,1,products/24.jpg,Wallet,Kitchen
+25,Cello Cleaning Mop,Home Essentials,"mop,cello",40,1200,1100,10,20-08-2019,01-04-2021,1,products/25.jpg,Wallet,Cleaning Essentials

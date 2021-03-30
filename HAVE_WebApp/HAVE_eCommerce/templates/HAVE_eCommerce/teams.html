@@ -1,0 +1,52 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Team {% endblock %}
+
+{% block content %}
+<div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+      <h1 style="color: black;">My Teams</h1>
+</div>
+<br><br<br><br<br> 
+<div class="container pb-5 mb-2 mb-md-3">
+  <div class="row"> 
+    <!-- Content  -->
+    <section class="col-lg-12">
+      <!-- Orders list-->
+      <div class="table-responsive font-size-md">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr style="size: 400px;">
+              <th class="col-1">Order ID</th>
+              <th class="col-1">Team ID</th>
+              <th class="col-2">Name</th>
+              <th class="col-2">Date Placed</th>
+              <th class="col-1">Status</th>
+              <th class="col-2">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td class="py-3"><a class="nav-link-style font-weight-medium font-size-sm" >{{order.orderID}}</a></td>
+              <td class="py-3">{{order.teamID.teamID}}</td>
+              <td class="py-3">{{order.productID.name}}</td>
+              <td class="py-3">{{order.dateCreated}}</td>
+              {% if order.status == "TEAM IN PROGRESS" %}
+              <td class="py-3"><span class="badge badge-warning m-0">{{order.status}} : {{order.teamID.team_size}} / {{order.productID.req_team_size}}</span></td>
+              {% elif order.status == "DELIVERY IN PROGRESS" %}
+              <td class="py-3"><span class="badge badge-info m-0">{{order.status}}</span></td>
+              {% else %}
+              <td class="py-3"><span class="badge badge-success m-0">{{order.status}}</span></td>
+              {% endif %}
+              <td class="py-3">Rs. {{order.cost}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <hr class="pb-4">
+    </section>
+  </div>
+</div>
+
+{% endblock %}

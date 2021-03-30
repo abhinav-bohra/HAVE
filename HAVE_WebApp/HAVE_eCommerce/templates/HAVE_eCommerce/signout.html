@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> HAVE | Thank You!</title>
+    <link rel="stylesheet" media="screen" href="{% static 'HAVE_eCommerce/css/bootstrap.min.css' %}">
+</head>
+  <!-- Page Content-->
+  <div class="container pb-5 mb-sm-4">
+    <div class="pt-5">
+      <div class="card py-3 mt-sm-3">
+        <div class="card-body text-center">
+          <h2 class="h4 pb-3">You have successfully logged out!</h2>
+          <a class="btn btn-primary mt-3 mr-3" href="{% url 'signin' %}">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

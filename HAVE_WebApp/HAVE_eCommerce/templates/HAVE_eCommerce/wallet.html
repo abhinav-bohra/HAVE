@@ -1,0 +1,26 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Orders {% endblock %}
+
+{% block content %}
+<!-- Body-->
+<div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+    <h1 style="color: black;">My Wallet</h1>
+</div>
+<br><br<br><br<br>
+<div class="container pb-5 mb-2 mb-md-3">
+    <div class="accordion mb-2" id="payment-method" role="tablist">
+      <div class="card">
+        <div class="card-header" role="tab">
+          <h3 class="accordion-heading"><a class="collapsed" href="#points" data-toggle="collapse" style="color: tomato;><i class="money-bag mr-2"></i>My account balance<span class="accordion-indicator"></span></a></h3>
+        </div>
+        <div class="card-body">
+          {% for w in wallet %}
+            <p>You currently have<span class="font-weight-medium">&nbsp;Rs. {{w.balance|floatformat:2}}</span>&nbsp;on your account balance.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+{% endblock %}

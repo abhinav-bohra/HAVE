@@ -1,0 +1,162 @@
+<!------------------------------------------------------------------ GROUP 10 ----------------------------------------------------------------->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> {% block title%} {% endblock %}</title>
+    <link rel="stylesheet" media="screen" href="{% static 'HAVE_eCommerce/css/bootstrap.min.css' %}">
+</head>
+  <!-- Body-->
+  <body class="toolbar-enabled">
+    <header class="box-shadow-sm">
+      <!------------------------------------------------------------------ Topbar ----------------------------------------------------------------->
+      <div class="topbar topbar-dark bg-dark">
+        <div class="container">
+          <div>
+            <div class="topbar-text"></div>
+            <div class="topbar-text">HAVE | A Social e-Commerce Platform </div>
+          </div>
+          <div class="d-none d-md-block ml-3 text-nowrap">
+          	<a class="topbar-link" href="#"></i>Contact Us @ 97755 23111</a> 
+          </div>
+        </div>
+      </div>
+      <!------------------------------------------------------------------ Header 1----------------------------------------------------------------->
+      <div class="navbar-sticky bg-light">
+        <div class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand d-none d-sm-block mr-3 flex-shrink-0" href="#" style="min-width: 7rem;"><img width="142" src="{% static 'HAVE_eCommerce/img/logo-dark.png' %}" alt="HAVE"/></a>
+            <a class="navbar-brand d-sm-none mr-2" href="#" style="min-width: 4.625rem;"><img width="74" src="{% static 'HAVE_eCommerce/img/logo-icon.png' %}" alt="HAVE"/></a>
+            
+            <!------------------------------------------------------------- Search -------------------------------------------------------------------->
+            <div class="input-group-overlay d-none d-lg-block mx-4">
+              <div class="input-group-prepend-overlay"><span class="input-group-text"></div>
+                <form method="POST">
+                  <div class="row">
+                    <div class="col-lg-10">
+                      {% csrf_token %}
+                      {{ form.errors }}
+                      {{ form.non_field_errors }}              
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="searchKey" id="searchKey"  placeholder="Search for products" >
+                        {% if search_form.searchKey.errors %}<div class="alert alert-danger"><strong>{{search_form.searchKey.errors}}</strong></div> {% endif %}
+                          <div class="invalid-feedback">Invalid search key.</div>
+                      </div>
+                    </div>
+                   <div class="col-lg-2" style="margin-left: -30px;">
+                    <button class="btn btn-outline-secondary" type="submit" name="submit" id="submit" ><a href="#">Search</a></button>
+                   </div>
+                  </div>
+                </form>
+              </div>
+            <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center" style="margin-left: -30px;">
+                <h6 href="#">Hi {{ user }}! &nbsp;
+                <button class="btn btn-primary" type="button" >
+                <a style="color:white" href ="/signout">Logout</a></button>
+              </div>
+            </div>
+        </div>
+
+        <!------------------------------------------------------------------ Departments Menu ----------------------------------------------------------------->
+        <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
+          <div class="container">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <!-- Search-->
+              <div class="input-group-overlay d-lg-none my-3">
+                <div class="input-group-prepend-overlay"><span class="input-group-text"><i class="icon_to_be_added_i-search"></i></span></div>
+                <input class="form-control" type="text" placeholder="Search for products">
+              </div>
+              <!-- Departments menu-->
+              <ul class="navbar-nav mega-nav pr-lg-2 mr-lg-2">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle pl-0" href="#" data-toggle="dropdown">
+                <i class="icon_to_be_added_i-menu align-middle mt-n1 mr-2"></i>Departments</a>
+                  <ul class="dropdown-menu">
+                  	<!-- Category 1 : Fashion -->
+                    <li><a class="dropdown-item" href="/home#cat1">
+                    <i class="icon_to_be_added_i-laptop opacity-60 font-size-lg mt-n1 mr-2"></i>Fashion</a></li>
+                    <!-- Category 2 : Electronics -->
+                    <li><a class="dropdown-item" href="/home#cat2">
+                    <i class="icon_to_be_added_i-laptop opacity-60 font-size-lg mt-n1 mr-2"></i>Electronics</a></li>
+                    <!-- Category 3 : Grocery -->
+                    <li><a class="dropdown-item" href="/home#cat3">
+                    <i class="icon_to_be_added_i-laptop opacity-60 font-size-lg mt-n1 mr-2"></i>Grocery</a></li>
+                    <!-- Category 4 : Home Essentials -->
+                    <li><a class="dropdown-item" href="/home#cat4">
+                    <i class="icon_to_be_added_i-laptop opacity-60 font-size-lg mt-n1 mr-2"></i>Home Essentials</a></li>
+			            </ul>
+                </li>
+              </ul>
+              <!-- Departments menu End-->
+              <!-- Primary menu-->
+              <ul class="navbar-nav">              
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'home' %} active {% endif %}"><a class="nav-link dropdown-toggle" href="/home" data-toggle="dropdown">Home</a></li>
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'shop' %} active {% endif %}"><a class="nav-link dropdown-toggle" href="/shop" data-toggle="dropdown">Shop</a></li>
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'account' %} active {% endif %}"><a class="nav-link dropdown-toggle" href="/account" data-toggle="dropdown">My Account</a></li>
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'teams' %} active {% endif %}"><a class="nav-link dropdown-toggle" href="/teams" data-toggle="dropdown">My Teams</a></li>
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'orders' %} active {% endif %}"><a class="nav-link dropdown-toggle" href="/orders" data-toggle="dropdown">My Orders</a></li>
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'wallet' %} active {% endif %}"><a class="nav-link dropdown-toggle" href="/wallet" data-toggle="dropdown">My Wallet</a></li>      
+              </ul>
+            </div>
+            <!-- Primary menu End-->
+          </div>
+        </div>
+      </div>
+  </header>
+
+    <!------------------------------------------------------------- Page Content------------------------------------------------------------->
+
+    <br>
+    {% block content %}
+
+    {% endblock %}
+    <br>
+    
+    <!----------------------------------------------------------- Page Content End ---------------------------------------------------------->
+
+
+    <!-------------------------------------------------------------  Footer  ---------------------------------------------------------------->
+    <footer class="bg-dark pt-5">
+      <div class="pt-5 bg-darker">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="media">
+                <div class="media-body pl-3">
+                  <h6 class="font-size-base text-light mb-1">Fast and free delivery</h6>
+                  <p class="mb-0 font-size-ms text-light opacity-50">Free delivery for all orders over Rs. 500</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="media">
+                <div class="media-body pl-3">
+                  <h6 class="font-size-base text-light mb-1">Money back guarantee</h6>
+                  <p class="mb-0 font-size-ms text-light opacity-50">We return money within 30 days</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="media">
+                <div class="media-body pl-3">
+                  <h6 class="font-size-base text-light mb-1">24/7 customer support</h6>
+                  <p class="mb-0 font-size-ms text-light opacity-50">Friendly 24/7 customer support</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="media">
+                <div class="media-body pl-3">
+                  <h6 class="font-size-base text-light mb-1">Secure online payment</h6>
+                  <p class="mb-0 font-size-ms text-light opacity-50">We possess SSL / Secure сertificate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr-light pb-4 mb-3">
+      </div>
+    </footer>      
+  </body>
+</html>
+
+<!------------------------------------------------------------------ GROUP 10 ----------------------------------------------------------------->

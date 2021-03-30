@@ -1,0 +1,86 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Account {% endblock %}
+
+{% block content %}
+<div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+<h1 style="color: black;">My Account</h1>
+</div><br>
+<div class="container" style="padding-top: 10px">
+<form class="needs-validation tab-pane fade show active" method="POST">
+  <div class="row">
+  {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    <div class="col-lg">
+        <h6><strong>Basic Details</strong></h6><hr><br>
+        <div class="form-group">
+          <label for="email">User Name</label>
+          <input class="form-control" type="text" name="{{ user_form.username.name}}" id="{{ user_form.username.name}}" value="{{user}}" disabled>
+          {% if user_form.username.errors %}<div class="alert alert-danger"><strong>{{user_form.username.errors}}</strong></div> {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input class="form-control" type="text" name="firstName" id="firstName" value="{{customer.firstName}}" >
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input class="form-control" type="text" name="lastName" id="lastName" value="{{customer.lastName}}" >
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input class="form-control" type="text" name="email" id="email" value="{{customer.email}}" >
+          <div class="invalid-feedback">Please provide a valid email address.</div>
+        </div>
+        <div class="form-group">
+          <label for="phone1">Phone Number </label>
+          <input class="form-control" type="text" name="phone1" id="phone1" value="{{customer.phone1}}" >
+          <div class="invalid-feedback">Please provide a valid phone number</div>
+        </div>
+        <div class="form-group">
+          <label for="phone2">Additional Contact Number</label>
+          <input class="form-control" type="text" name="phone2" id="phone2" value="{{customer.phone2}}" >
+          <div class="invalid-feedback">Please provide a valid phone number.</div>
+        </div>              
+    </div>
+    <div class="col-lg">
+        <h6><strong>Address Details</strong></h6><hr><br>              
+        <div class="form-group">
+          <label for="addressLine1">Address Line 1</label>
+          <input class="form-control" type="text" name="addressLine1" id="addressLine1" value="{{customer.addressLine1}}" >
+        </div>
+        <div class="form-group">
+          <label for="addressLine2">Address Line 2</label>
+          <input class="form-control" type="text" name="addressLine2" id="addressLine2" value="{{customer.addressLine2}}">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input class="form-control" type="text" name="city" id="city" value="{{customer.city}}">
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input class="form-control" type="text" name="state" id="state" value="{{customer.state}}">
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input class="form-control" type="text" name="country" id="country" value="{{customer.country}}">
+        </div>
+        <div class="form-group">
+          <label for="pincode">Pincode</label>
+          <input class="form-control" type="text" name="pincode" id="pincode" value="{{customer.pincode}}">
+        </div>
+    </div>    
+  </div>
+  <div class="row">
+    <div class="col-lg"> 
+      <div class="form-group">
+        <button class="btn btn-success btn-block btn-shadow" type="submit" name="submit" style="width: 350px;">Save Account Info</button>
+      </div>
+    </div> 
+    <div class="col-lg">
+        <button class="btn btn-danger btn-block btn-shadow" style="width: 350px;"><a href="{% url 'delete' %}" style="color: white;">Delete My Account</a></button><br><br>
+    </div>
+  </div>
+</form> 
+</div>
+{% endblock %}

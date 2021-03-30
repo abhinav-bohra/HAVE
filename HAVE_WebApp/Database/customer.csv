@@ -1,0 +1,4 @@
+﻿customerID,firstName,lastName,addressLine1,addressLine2,city,state,country,pincode,phone1,phone2,email,password,dateCreated
+1,Abhinav,Bohra,"A-66, Sun Breeze Towers","Gurukul Road, Memnagar",Ahmedabad,Gujarat,India,380052,9775523111,NULL,abhinavbohra09@gmail.com,123,2021-03-20
+2,Animesh,Jain,"B-34, Sun Breeze Towers","Navarangpura Road, Memnagar",Indore,MP,India,340099,9098089801,NULL,animeshjain@gmail.com,456,2021-03-21
+3,Devarshi,Patel,"C-26, Chandkedha",Maninagar,Ahmedabad,Gujarat,India,380056,9098045980,NULL,devpatel@gmail.com,123,2021-03-22

@@ -1,0 +1,111 @@
+{% extends 'HAVE_eCommerce/layout.html' %}
+
+{% block title%} HAVE | Product {% endblock %}
+
+{% block content %}
+
+{% load static %}
+<!------------------------------------------------------------- Page Content------------------------------------------------------------->
+  <!-- Page Content-->
+  <div class="container">
+	<div class="bg-light box-shadow-lg rounded-lg px-4 py-3 mb-5">
+	  <div class="px-lg-3">
+		<div class="row">
+		  <!-- Product-->
+		  {% for prod in product %}						
+		  <!-- Product Image-->
+		  <div class="col-lg-7 pt-lg-4" style="margin-top: -50px;">
+			<div>
+				<img src="{{prod.image.url}}" alt="Product image">
+			</div>
+		  </div>
+		  <!-- Product details-->
+		  <div class="col-lg-5 pt-lg-0" style="margin-left: -20px;">
+			<div class="d-flex justify-content-between align-items-center mb-2"><a href="#reviews" data-scroll>
+				<h3>{{prod.name}}</h3></a>
+			</div>
+			  <div class="mb-3">
+				  <span class="h4 font-weight-normal mr-1"><strike>Rs. {{prod.individual_price}}</strike><br></span>
+				  <span class="h3 font-weight-normal mr-1 text-accent">Rs. {{prod.bulk_price|floatformat:2}}</span>
+			  </div>
+			  <form class="mb-grid-gutter" method="post">
+				<div class="form-group d-flex align-items-center">
+				  <button class="btn btn-info btn-shadow btn-block" type="button">
+					  <a href="#teams" style="color: white;">Check Available Teams</button>
+				</div>
+			  </form>
+			  <!-- Product panels-->
+			  <div class="accordion mb-4" id="productPanels">
+				<div class="card">
+				  <div class="card-header">
+					<h3 class="accordion-heading"><a role="button" data-toggle="collapse" aria-expanded="true"></i>Product Info<span class="accordion-indicator"></span></a></h3>
+				  </div>
+				  <div>
+					<div class="card-body">
+					  <a class="font-size-sm mb-2">Product ID : {{prod.productID}}<br></a>
+					  <a class="font-size-sm mb-2">Category: {{prod.category}} <br></a>
+					  <a class="font-size-sm mb-2">Sub-Category: {{prod.subcategory}}<br></a>
+					  <a class="font-size-sm mb-2">Stock: {{prod.stock}}<br></a>
+					  <a class="font-size-sm mb-2">Payment Mode: {{prod.paymentMode}}<br></a>
+					  <a class="font-size-sm mb-2">Required Team Size: {{prod.req_team_size}}<br></a>
+					</div>
+				  </div>
+				<div>
+					<hr>
+					<div class="card-body">
+					  <h6 class="font-size-sm mb-2">Description:</h6><a>{{prod.description}}</a>
+					  </div>
+				    </div>
+				</div>
+				<!-- Sharing-->
+				<br>
+				<h6 class="d-inline-block align-middle font-size-base my-2 mr-2">&nbsp;Share:</h6>
+				<a class="share-btn sb-twitter mr-2 my-2" href="twitter.com"></i>Twitter</a>
+				<a class="share-btn sb-instagram mr-2 my-2" href="instagram.com"></i>Instagram</a>
+				<a class="share-btn sb-facebook my-2" href="facebook.com"></i>Facebook</a>
+			</div>
+		  </div>
+		</div>
+		{% endfor %}
+	  </div>
+	</div>
+
+	<!-- Teams Available -->
+	<div class="bg-light box-shadow-lg rounded-lg px-4 py-3 mb-5">
+	  <div class="px-lg-3">
+		<h2 class="h6 border-bottom pb-3 mb-3">Available teams</h2><br>
+		{% with flag=0 %}  
+		{% for prod in product %}
+		  <!-- Team-->
+		  {% for team in teams %}	 
+		  {%  if team.team_size < prod.req_team_size   %}  				 
+		  <div class="media d-block d-sm-flex align-items-center pt-4 pb-2">
+      			<a class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto" style="width: 12.5rem;">
+        		<img class="rounded-lg" src="{{prod.image.url}}" alt="Team"></a>
+      			<div class="media-body text-center text-sm-left">
+        			<h2 class="h6 product-title mb-2">Team {{team.teamID}}</a></h2>
+        			<div class="product-price">Product: {{prod.name}}</div>
+					<div class="d-inline-block text-accent"><h3>Hurry! {{team.team_size}} out of {{prod.req_team_size}} filled! </h3></div> 
+					<button class="btn btn-primary btn-sm btn-block mb-2" style=" width:320px;" type="button" ><a style="color:white" href ="/product/checkout/{{ prod.productID }}/{{team.teamID}}/{{flag}}">Choose</a></button>
+      			</div>
+    	  </div>
+		  {% endif %}	 		  	   
+		  {% endfor %}
+		</div>
+		  {% with flag1=1 %}
+		  <div class="media d-block d-sm-flex align-items-center pt-4 pb-2" id="teams" style="margin-left: 10px;">
+      		<div class="media-body text-center text-sm-left">
+        		<h3 class="h6 product-title mb-2">Want to create your own team?</a></h3>
+				<div class="price text-accent">Go Ahead!...Do invite your friends to fill it up fast :)</div><br>
+				<button class="btn btn-success btn-sm btn-block mb-2" style=" width:350px;" type="button" ><a style="color:white" href ="/product/checkout/{{ prod.productID }}/{{flag1}}/{{flag1}}">Create a new team!</a></button>
+			</div>
+    	   </div>
+		    {% endwith %}   
+		{% endfor %}
+		{% endwith %}
+		</div>
+	   </div>
+	</div>
+<!----------------------------------------------------------- Page Content End -------------------------------------------------------------->
+
+{% endblock %}
