@@ -1,6 +1,7 @@
 # HAVE Hybrid Automated Virtual Enterprise
 A Social eCommerce Platform to facilitate Team purchase of E-Commerce Products.
 
+<p><br><img src="Screenshots/home1.png" width="1220" height="540" /></p><br>
 
 ## Motivation
 Across the globe, as the novel coronavirus moves us from communal spaces into the confinement of our homes, our social experiences are forced to adapt. Beyond the social networks we already know and use, we find new ways to integrate socially into our online lives. We are considering what this might mean for the future of e-commerce. But now, as the world is recovering from the impact of COVID-19, a social-shopping approach is even better poised to capture the offline-to-online transition in commerce fully.
@@ -9,8 +10,13 @@ We found room in e-commerce, not as a competitor to search-based websites like A
 Social shopping may seem like a new concept. Still, the reality is that in the physical world, shopping is meant to be “interactive and fun”, and purchases are regularly informed by friends and family.
 
 Consider how much harder it feels to purchase a new clothing item without immediate feedback from friends. E-commerce platforms like Flipkart, Myntra, and Amazon don’t account for this. Instead, they optimise for efficiency, funnel conversion, and purchase rates. “Have”, on the other hand, will try to mimic the offline shopping experience online by building community via our team purchase model, driving engagement via fun rewards, and offering personalised experiences and value via recommendations.
+
 Like something? Have it!
 
+## Screenshots
+
+<p><img src="Screenshots/C1.jpg" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/C2.jpg" width="1520" height="940" /></p><br>
 
 ## Getting Started
 
