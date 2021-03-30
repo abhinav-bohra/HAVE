@@ -15,8 +15,13 @@ Like something? Have it!
 
 ## Screenshots
 
-<p><img src="Screenshots/C1.png" width="1520" height="940" /></p><br>
-<p><img src="Screenshots/C2.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/login.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/home2.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/home3.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/poduct1.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/poduct2.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/teams.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/orders.png" width="1520" height="940" /></p><br>
 
 ## Getting Started
 
