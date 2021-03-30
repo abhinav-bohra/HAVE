@@ -15,8 +15,8 @@ Like something? Have it!
 
 ## Screenshots
 
-<p><img src="Screenshots/C1.jpg" width="1520" height="940" /></p><br>
-<p><img src="Screenshots/C2.jpg" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/C1.png" width="1520" height="940" /></p><br>
+<p><img src="Screenshots/C2.png" width="1520" height="940" /></p><br>
 
 ## Getting Started
 
