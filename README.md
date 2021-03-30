@@ -18,7 +18,7 @@ Like something? Have it!
 <p><img src="Screenshots/login.png" width="1520" height="540" /></p>
 <p><img src="Screenshots/home2.png" width="1520" height="640" /></p><br>
 <p><img src="Screenshots/home3.png" width="1520" height="640" /></p><br>
-<p><img src="Screenshots/product1.png" width="1520" height="540" /></p><br>
+<p><img src="Screenshots/product1.png" width="1520" height="640" /></p><br>
 <p><img src="Screenshots/product2.png" width="1520" height="540" /></p><br>
 <p><img src="Screenshots/teams.png" width="1520" height="540" /></p><br>
 <p><img src="Screenshots/orders.png" width="1520" height="540" /></p><br>
